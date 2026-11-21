@@ -4,6 +4,9 @@ My solution to the Buzzvel Front-End Engineer coding challenge (November 2026): 
 landing page for "Luma", built from the provided Figma design with **Next.js (App Router),
 TypeScript and Tailwind CSS**.
 
+- **Live demo:** https://buzzvel-frontend-challenge-nine.vercel.app/
+- **Video walkthrough (3 min):** https://www.loom.com/share/c93cfa0f7931408f99dc9bad27c76806
+
 | Desktop | Mobile |
 | --- | --- |
 | <img src="docs/screenshot-desktop.webp" alt="Desktop version of the page" width="420"> | <img src="docs/screenshot-mobile.webp" alt="Mobile version of the page" width="160"> |
@@ -20,6 +23,9 @@ npm start        # run the production build
 ```
 
 Other scripts: `npm run lint`, `npm run typecheck` and `npm test`.
+
+On Vercel the page's share links use the production domain automatically. Elsewhere, set
+`NEXT_PUBLIC_SITE_URL` to the site's address.
 
 ## What I built
 

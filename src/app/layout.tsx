@@ -16,7 +16,13 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+// Absolute URL for canonical/Open Graph tags: an explicit override, else the
+// production domain Vercel provides at build time, else local dev.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 const title = "Luma — Build skills that actually move you forward";
 const description =
   "Practical courses taught by people who do the work every day. Learn design, technology, business and more — one focused lesson at a time.";
