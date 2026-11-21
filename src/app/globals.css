@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens taken from the Figma file "Buzzvel FE - Test 2026".
+ * Colour names describe their role so components read like the design.
+ */
+@theme {
+  --color-cream: #f9f8f3;
+  --color-ink: #171b2c;
+  --color-body: #656770;
+  /* Figma uses #6d7384, which is 4.45:1 on cream; nudged to pass WCAG AA (4.5:1). */
+  --color-muted: #6b7182;
+  --color-line: #dbdfeb;
+  --color-primary: #3157f6;
+  --color-primary-hover: #2445d6;
+  --color-primary-soft: #e2e8ff;
+  --color-sun: #ffee7e;
+  --color-sun-hover: #fde45a;
+  --color-peach: #ffcb9f;
+  --color-coral: #ff704d;
+  --color-butter: #fff1c2;
+  --color-mustard: #e9d659;
+  --color-footer-text: #9e9faa;
+  --color-mist: #e7e7ec;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 4px 24px 0 rgb(0 0 0 / 0.1);
+  --shadow-form: 0 12px 32px 0 rgb(23 27 44 / 0.04);
+  --shadow-photo: 0 0 4px 0 rgb(0 0 0 / 0.07), 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+  --animate-menu-in: menu-in 200ms ease-out;
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    /* Keeps anchor targets clear of the sticky header. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-ink);
+  }
+}
+
+/*
+ * Focus rings on coloured/dark surfaces (featured course, footer) switch to
+ * white so they stay visible. Unlayered, so it wins over utility classes.
+ */
+.surface-dark :focus-visible {
+  outline-color: var(--color-white);
+}
+
+/* Respect users who ask the OS for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
